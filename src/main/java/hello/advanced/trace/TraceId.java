@@ -6,6 +6,7 @@ import java.util.UUID;
 
 @Getter
 public class TraceId {
+
     private String id;
     private int level;
 
@@ -27,11 +28,19 @@ public class TraceId {
         return new TraceId(id, level + 1);
     }
 
-    private TraceId createPreviousId() {
-        return new TraceId(id, level + 1);
+    public TraceId createPreviousId() {
+        return new TraceId(id, level - 1);
     }
 
     public boolean isFirstLevel() {
         return level == 0;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }
