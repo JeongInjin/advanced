@@ -52,7 +52,7 @@ public class FieldLogTrace implements LogTrace{
 
     private void releaseTraceId() {
         if(traceIdHolder.isFirstLevel()) traceIdHolder = null; //destroy
-        else traceIdHolder.createPreviousId();
+        else traceIdHolder = traceIdHolder.createPreviousId();
     }
 
     private static String addSpace(String prefix, int level) {
