@@ -3,7 +3,6 @@ package hello.advanced.trace.logtrace;
 import hello.advanced.trace.TraceId;
 import hello.advanced.trace.TraceStatus;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 public class FieldLogTrace implements LogTrace{
@@ -16,14 +15,14 @@ public class FieldLogTrace implements LogTrace{
 
     @Override
     public TraceStatus begin(String message) {
-        synctraceId();
+        syncTraceId();
         TraceId traceId = traceIdHolder;
         Long startTimeMs = System.currentTimeMillis();
         log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
         return new TraceStatus(traceId, startTimeMs, message);
     }
 
-    private void synctraceId() {
+    private void syncTraceId() {
         if(traceIdHolder == null) traceIdHolder = new TraceId();
         else traceIdHolder = traceIdHolder.createNextId();
     }
@@ -34,7 +33,7 @@ public class FieldLogTrace implements LogTrace{
     }
 
     @Override
-    public void exceotion(TraceStatus status, Exception e) {
+    public void exception(TraceStatus status, Exception e) {
         complete(status, e);
     }
 

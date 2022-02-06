@@ -8,6 +8,6 @@ public interface LogTrace {
 
     void end(TraceStatus status);
 
-    void exceotion(TraceStatus status, Exception e);
+    void exception(TraceStatus status, Exception e);
 
 }

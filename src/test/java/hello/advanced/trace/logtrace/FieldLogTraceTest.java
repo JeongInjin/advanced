@@ -3,8 +3,6 @@ package hello.advanced.trace.logtrace;
 import hello.advanced.trace.TraceStatus;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FieldLogTraceTest {
 
     FieldLogTrace trace = new FieldLogTrace();
@@ -23,8 +21,8 @@ class FieldLogTraceTest {
         TraceStatus status1 = trace.begin("hello1");
         TraceStatus status2 = trace.begin("hello2");
 
-        trace.exceotion(status2, new IllegalStateException());
-        trace.exceotion(status1, new IllegalStateException());
+        trace.exception(status2, new IllegalStateException());
+        trace.exception(status1, new IllegalStateException());
     }
 
 }
